@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dryer Analytics Script</title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    #upload-container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    #upload-input {
+    }
+
+    #processing-message {
+      display: none;
+      margin-top: 20px;
+      color: #555;
+    }
+
+    .disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+    <h1>Home</h1>
+  <div id="upload-container">
+    <form id = "upload-input" action = "http://localhost:5000/uploader" method = "POST" 
+         enctype = "multipart/form-data" onsubmit="handleFileUpload()">
+         <input type = "file" name = "file" accept=".csv"/>
+         <input type = "submit"/>
+      </form>
+    
+    <p id="processing-message">File processing is ongoing. Please wait...</p>
+  </div>
+
+  <script>
+    function handleFileUpload() {
+      const processingMessage = document.getElementById('processing-message');
+           
+      processingMessage.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
